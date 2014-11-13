@@ -27,5 +27,4 @@
     Order deny,allow
     Allow from all
   </Proxy>
-  AssignUserId ppp ppp
 </VirtualHost>
