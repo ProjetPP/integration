@@ -17,6 +17,7 @@ install:
    - python3 get-pip.py --user
    - pip3 install --user gunicorn requests ppp_datamodel ppp_core jsonrpclib-pelix nltk
    - python3 -m nltk.downloader wordnet
+   - sudo apt-get install lsof
 
 before_script:
    - git clone https://github.com/ProjetPP/Deployment.git
@@ -24,6 +25,7 @@ before_script:
    - ./Deployment/run_corenlp.sh &
    - ./Deployment/bootstrap_modules.sh
    - ./Deployment/run_python.sh &
+   - lsof -i :9000
 
 script:
    - python3 run_tests.py
