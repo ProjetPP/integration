@@ -9,7 +9,7 @@ install:
    - ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
    # configure apache virtual hosts
    - sudo cp -f travis-ci-apache /etc/apache2/sites-available/default
-   - sudo cat travis-ci-hosts >> /etc/hosts
+   - cat travis-ci-hosts | sudo tee -a /etc/hosts
    - sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)/PPP-Wikidata?g" --in-place /etc/apache2/sites-available/default
    - sudo service apache2 restart
    - wget https://bootstrap.pypa.io/get-pip.py
