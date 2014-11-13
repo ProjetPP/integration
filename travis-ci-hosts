@@ -1,4 +1,5 @@
 
 127.0.0.1   wikidata.ppp.pony.ovh
+127.0.0.1   gunicorn.ppp.pony.ovh
 127.0.0.1   ppp.pony.ovh
 
