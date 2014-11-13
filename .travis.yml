@@ -17,12 +17,11 @@ install:
    - python -m nltk.downloader wordnet
 
 before_script:
-   - cd
    - git clone https://github.com/ProjetPP/Deployment.git
    - ./Deployment/bootstrap_corenlp.sh
    - ./Deployment/run_corenlp.sh &
    - ./Deployment/bootstrap_modules.sh
-   - ./Deployment/run_modules.sh &
+   - ./Deployment/run_python.sh &
 
 script:
    - python3 run_tests.py
