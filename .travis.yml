@@ -1,0 +1,32 @@
+language: python
+
+python:
+  - 3.2
+  - 3.3
+  - 3.4
+  - pypy3
+
+install:
+   - sudo apt-get install python3 git npm python3-pip curl wget php5-cli php5-curl unzip openjdk-7-jre-headless apache2 libapache2-mod-fastcgi
+   - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
+   - sudo a2enmod rewrite actions fastcgi alias
+   - echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+   - ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
+   # configure apache virtual hosts
+   - sudo cp -f build/travis-ci-apache /etc/apache2/sites-available/default
+   - sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)/PPP-Wikidata?g" --in-place /etc/apache2/sites-available/default
+   - sudo service apache2 restart
+   - pip install requests ppp_datamodel ppp_core jsonrpclib-pelix nltk
+   - python -m nltk.downloader wordnet
+
+before_script:
+   - ./Deployment/bootstrap_corenlp.sh
+   - ./Deployment/run_corenlp.sh &
+   - ./Deployment/bootstrap_modules.sh
+   - ./Deployment/run_modules.sh &
+
+script:
+   - python3 run_tests.py
+
+after_script:
+  - ocular --data-file ".coverage"
