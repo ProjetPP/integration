@@ -4,6 +4,7 @@ install:
    - sudo apt-get update
    - sudo apt-get install git npm curl wget php5-cli php5-curl unzip openjdk-7-jre-headless apache2 libapache2-mod-fastcgi python3
    - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
+   - sudo sed -i "s/9000/8000/" ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
    - sudo a2enmod rewrite actions fastcgi alias
    - echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
    - ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
