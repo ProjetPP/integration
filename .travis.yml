@@ -25,6 +25,7 @@ before_script:
    - ./Deployment/run_corenlp.sh &
    - ./Deployment/bootstrap_modules.sh
    - ./Deployment/run_python.sh &
+   - sleep 5
 
 script:
    - python3 run_tests.py
