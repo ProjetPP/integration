@@ -25,6 +25,8 @@ before_script:
    - ./Deployment/run_corenlp.sh &
    - pwd
    - ./Deployment/bootstrap_modules.sh
+   - ls "$(pwd)/PPP-Wikidata/PPP-Wikidata/www/"
+   - sudo service apache2 restart
    - ./Deployment/run_python.sh &
    - sleep 5
 
