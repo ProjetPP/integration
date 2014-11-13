@@ -13,9 +13,10 @@ install:
    - sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)/PPP-Wikidata?g" --in-place /etc/apache2/sites-available/default
    - sudo service apache2 restart
    - wget https://bootstrap.pypa.io/get-pip.py
-   - sudo python3 get-pip.py
-   - sudo pip3 install --user gunicorn requests ppp_datamodel ppp_core jsonrpclib-pelix nltk
-   - sudo python3 -m nltk.downloader wordnet
+   - export PATH=$HOME/.local/bin:$PATH
+   - python3 get-pip.py
+   - pip3 install --user gunicorn requests ppp_datamodel ppp_core jsonrpclib-pelix nltk
+   - python3 -m nltk.downloader wordnet
 
 before_script:
    - git clone https://github.com/ProjetPP/Deployment.git
