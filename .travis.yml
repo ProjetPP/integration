@@ -13,7 +13,7 @@ install:
    - sudo service apache2 restart
    - wget https://bootstrap.pypa.io/get-pip.py
    - sudo python3 get-pip.py
-   - pip install --user requests ppp_datamodel ppp_core jsonrpclib-pelix nltk
+   - pip3 install --user requests ppp_datamodel ppp_core jsonrpclib-pelix nltk
    - python -m nltk.downloader wordnet
 
 before_script:
