@@ -1,8 +1,8 @@
 <VirtualHost *:80>
-  DocumentRoot /home/travis/Deployment/PPP-Wikidata/www/
+  DocumentRoot %TRAVIS_BUILD_DIR%/PPP-Wikidata/www/
   ServerName wikidata.ppp.pony.ovh
 
-  <Directory "/home/travis/Deployment/PPP-Wikidata/www/">
+  <Directory "%TRAVIS_BUILD_DIR%/PPP-Wikidata/www/">
     Options FollowSymLinks MultiViews ExecCGI
     AllowOverride All
     Order deny,allow
