@@ -28,7 +28,7 @@ before_script:
    - ls "$(pwd)/PPP-Wikidata"
    - sudo service apache2 restart
    - ./Deployment/run_python.sh &
-   - sleep 5
+   - sleep 20
 
 script:
    - python3 run_tests.py
