@@ -12,4 +12,6 @@ class SpellCheckerNlpWikidataTestCase(TestCase):
         self.assertGreaterEqual(len(r), 1, r)
         for o in r:
             self.assertEqual(o.tree.type, 'resource')
-            self.assertIn(o.tree.value, {'1732-02-22', '22/2/1732'})
+            self.assertIn(o.tree.value,
+                    {'What is the birth date of George Washington',
+                     '1732-02-22', '22/2/1732'})
