@@ -12,11 +12,12 @@ class SpellCheckerNlpWikidataTestCase(TestCase):
         self.assertGreaterEqual(len(r), 1, r)
         got_actual_answer = False
         for o in r:
-            self.assertEqual(o.tree.type, 'resource')
-            self.assertIn(o.tree.value,
-                    {'What is the birth date of George Washington',
-                     '1732-02-22', '22/2/1732'})
-            if o.tree.value in {'1732-02-22', '22/2/1732'}:
+            self.assertIn(o.tree.type, {'resource', 'sentence'})
+            if o.tree.type == 'resource':
+                self.assertIn(o.tree.value, {'1732-02-22', '22/2/1732'})
                 got_actual_answer = True
+            else:
+                self.assertEqual(o.tree.value,
+                        'What is the birth date of George Washington')
         self.assertTrue(got_actual_answer, r)
 
