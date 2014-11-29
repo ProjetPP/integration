@@ -1,5 +1,3 @@
-cache
-
 language: php
 
 cache:
