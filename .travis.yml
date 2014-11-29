@@ -1,6 +1,7 @@
 language: php
 
 cache:
+  apt: true
   directories:
   - cache/
 
@@ -44,3 +45,7 @@ before_script:
 
 script:
    - python3 run_tests.py
+
+
+after_failure:
+   - ps aux --sort -rss | cat
