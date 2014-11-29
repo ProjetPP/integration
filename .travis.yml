@@ -32,6 +32,7 @@ before_script:
    - ./Deployment/run_python.sh &
    - sleep 20
    - free -m
+   - ps aux --sort -rss
 
 script:
    - python3 run_tests.py
