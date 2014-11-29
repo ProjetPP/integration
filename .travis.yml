@@ -1,7 +1,14 @@
+cache
+
 language: php
+
+cache:
+  directories:
+  - cache/
 
 install:
    - free -m
+   - mkdir -p cache/
    - sudo apt-get update
    - sudo apt-get install git npm curl wget php5-cli php5-curl unzip openjdk-7-jre-headless apache2 libapache2-mod-fastcgi python3 python3-dev libaspell-dev
    - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
@@ -23,7 +30,9 @@ install:
 
 before_script:
    - git clone https://github.com/ProjetPP/Deployment.git
+   - cp cache/stanford-corenlp-full-2014-08-27.zip . || true
    - ./Deployment/bootstrap_corenlp.sh
+   - cp -u stanford-corenlp-full-2014-08-27.zip cache/
    - ./Deployment/run_corenlp.sh &
    - pwd
    - ./Deployment/bootstrap_modules.sh
