@@ -1,3 +1,11 @@
+# Wire up Apache to use Travis CI's php-fpm.
+<IfModule mod_fastcgi.c>
+  AddHandler php5-fcgi .php
+  Action php5-fcgi /php5-fcgi
+  Alias /php5-fcgi /usr/lib/cgi-bin/php5-fcgi
+  FastCgiExternalServer /usr/lib/cgi-bin/php5-fcgi -host 127.0.0.1:8000 -pass-header Authorization
+</IfModule>
+
 <VirtualHost *:80>
   DocumentRoot %TRAVIS_BUILD_DIR%/PPP-Wikidata/www/
   ServerName wikidata.ppp.pony.ovh
@@ -8,15 +16,6 @@
     Order deny,allow
     Allow from all
   </Directory>
-
-  # Wire up Apache to use Travis CI's php-fpm.
-  <IfModule mod_fastcgi.c>
-    AddHandler php5-fcgi .php
-    Action php5-fcgi /php5-fcgi
-    Alias /php5-fcgi /usr/lib/cgi-bin/php5-fcgi
-    FastCgiExternalServer /usr/lib/cgi-bin/php5-fcgi -host 127.0.0.1:8000 -pass-header Authorization
-  </IfModule>
-
 </VirtualHost>
 
 <VirtualHost *:80>
@@ -29,15 +28,6 @@
     Order deny,allow
     Allow from all
   </Directory>
-
-  # Wire up Apache to use Travis CI's php-fpm.
-  <IfModule mod_fastcgi.c>
-    AddHandler php5-fcgi .php
-    Action php5-fcgi /php5-fcgi
-    Alias /php5-fcgi /usr/lib/cgi-bin/php5-fcgi
-    FastCgiExternalServer /usr/lib/cgi-bin/php5-fcgi -host 127.0.0.1:8000 -pass-header Authorization
-  </IfModule>
-
 </VirtualHost>
 
 <VirtualHost *:80>
