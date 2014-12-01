@@ -8,7 +8,10 @@ class FlowerTestCase(TestCase):
     def testFlowerAnswers(self):
         r = requests.post('http://ppp.pony.ovh:9000/core/', data='{"id": "", "language": "en", "trace": [], "measures": {}, "tree": {"type": "triple", "subject": {"type": "resource", "value": "you"}, "object": {"type": "missing"}, "predicate": {"type": "resource", "value": "identity"}}}').json()
         r = list(map(Response.from_dict, r))
-        self.assertEqual(len(r), 1, r)
-        o = r[0]
-        self.assertEqual(o.tree.type, 'resource')
-        self.assertIn(o.tree.value, requesthandler.YOU_ARE)
+        self.assertGreaterEqual(len(r), 1, r)
+        got_actual_answer = False
+        for o in r:
+            if o.tree.type == 'resource':
+                self.assertIn(o.tree.value, requesthandler.YOU_ARE)
+                got_actual_answer = True
+        self.assertTrue(got_actual_answer, r)
