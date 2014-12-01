@@ -12,6 +12,6 @@ class FlowerTestCase(TestCase):
         got_actual_answer = False
         for o in r:
             if o.tree.type == 'resource':
-                self.assertIn(o.tree.value, requesthandler.YOU_ARE)
-                got_actual_answer = True
+                if o.tree.value in requesthandler.YOU_ARE:
+                    got_actual_answer = True
         self.assertTrue(got_actual_answer, r)
