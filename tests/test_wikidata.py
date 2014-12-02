@@ -11,6 +11,5 @@ class WikidataTestCase(TestCase):
                         map(Response.from_dict, r)))
         self.assertGreaterEqual(len(r), 1, r)
         for o in r:
-            self.assertEqual(o.tree.type, 'list')
-            for resource in o.tree.list:
-                self.assertEqual(resource.value, '1952-03-11')
+            self.assertEqual(o.tree.type, 'resource')
+            self.assertEqual(o.tree.value, '1952-03-11')
