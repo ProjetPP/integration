@@ -5,8 +5,8 @@ from ppp_datamodel import Triple, Missing, Resource
 from ppp_datamodel.communication import Response
 
 class TripleWikidataTestCase(TestCase):
-    def testSpellCheckerNlpWikidata(self):
-        r = requests.post('http://ppp.pony.ovh:9000/core/', data='{"id": "", "language": "en", "trace": [], "measures": {}, "tree": {"type": "sentence", "value": "(Douglas Adams, birth date, ?"}}').json()
+    def testTripleWikidata(self):
+        r = requests.post('http://ppp.pony.ovh:9000/core/', data='{"id": "", "language": "en", "trace": [], "measures": {}, "tree": {"type": "sentence", "value": "(Douglas Adams, birth date, ?)"}}').json()
         r = list(filter(lambda x:not isinstance(x.tree, Triple),
                         map(Response.from_dict, r)))
         self.assertGreaterEqual(len(r), 2, r)
