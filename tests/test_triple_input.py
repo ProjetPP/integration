@@ -21,5 +21,5 @@ class TripleWikidataTestCase(TestCase):
                 self.assertEqual(o.tree, Triple(
                     Resource('Douglas Adams'),
                     Resource('birth date'),
-                    Missing()))
+                    Missing()), o)
         self.assertTrue(got_actual_answer, r)
