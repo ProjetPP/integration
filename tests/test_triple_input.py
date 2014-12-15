@@ -15,7 +15,7 @@ class TripleWikidataTestCase(TestCase):
             if o.tree.type == 'resource':
                 self.assertEqual(o.tree.value, '1952-03-11')
                 got_actual_answer = True
-            elif o.trace[0].module == 'NLP-ML-standalone':
+            elif o.trace[0].module in ('NLP-ML-standalone', 'QuestionParsing-Grammatical'):
                 pass
             else:
                 self.assertEqual(o.tree, Triple(
