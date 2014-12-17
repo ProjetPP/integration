@@ -32,6 +32,7 @@ install:
 before_script:
    - git clone https://github.com/ProjetPP/Deployment.git
    - sed -i "s#/home/ppp/#$HOME/#" Deployment/*.json
+   - sed -i "s#--upgrade##" Deployment/bootstrap_modules.sh
    - ./Deployment/bootstrap_icons.sh
    - cp cache/stanford-corenlp-full-2014-08-27.zip . || true
    - ./Deployment/bootstrap_corenlp.sh
