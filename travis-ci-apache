@@ -8,7 +8,7 @@
 
 <VirtualHost *:80>
   DocumentRoot %TRAVIS_BUILD_DIR%/PPP-Wikidata/www/
-  ServerName wikidata.ppp.pony.ovh
+  ServerName wikidata.backend.askplatyp.us
 
   <Directory "%TRAVIS_BUILD_DIR%/PPP-Wikidata/www/">
     Options FollowSymLinks MultiViews ExecCGI
@@ -19,19 +19,7 @@
 </VirtualHost>
 
 <VirtualHost *:80>
-  DocumentRoot %TRAVIS_BUILD_DIR%/PPP-Wikipedia/www/
-  ServerName wikipedia.ppp.pony.ovh
-
-  <Directory "%TRAVIS_BUILD_DIR%/PPP-Wikipedia/www/">
-    Options FollowSymLinks MultiViews ExecCGI
-    AllowOverride All
-    Order deny,allow
-    Allow from all
-  </Directory>
-</VirtualHost>
-
-<VirtualHost *:80>
-  ServerName gunicorn.ppp.pony.ovh
+  ServerName core.frontend.askplatyp.us
   ProxyPass / http://127.0.0.1:9000/
   ProxyPassReverse / http://127.0.0.1:9000/
   <Proxy *>

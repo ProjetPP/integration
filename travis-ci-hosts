@@ -1,6 +1,5 @@
 
-127.0.0.1   wikidata.ppp.pony.ovh
-127.0.0.1   wikipedia.ppp.pony.ovh
-127.0.0.1   gunicorn.ppp.pony.ovh
-127.0.0.1   ppp.pony.ovh
+127.0.0.1   wikidata.backend.askplatyp.us
+127.0.0.1   core.frontend.askplatyp.us
+127.0.0.1   askplatyp.us
 

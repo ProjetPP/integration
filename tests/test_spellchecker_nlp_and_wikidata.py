@@ -6,7 +6,7 @@ from ppp_datamodel.communication import Response
 
 class SpellCheckerNlpWikidataTestCase(TestCase):
     def testSpellCheckerNlpWikidata(self):
-        r = requests.post('http://ppp.pony.ovh:9000/core/', data='{"id": "", "language": "en", "trace": [], "measures": {}, "tree": {"type": "sentence", "value": "What is the birth daet of Douglas Adams?"}}').json()
+        r = requests.post('http://askplatyp.us:9000/core/', data='{"id": "", "language": "en", "trace": [], "measures": {}, "tree": {"type": "sentence", "value": "What is the birth daet of Douglas Adams?"}}').json()
         r = list(filter(lambda x:not isinstance(x.tree, Triple),
                         map(Response.from_dict, r)))
         self.assertGreaterEqual(len(r), 1, r)

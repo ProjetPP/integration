@@ -6,7 +6,7 @@ from ppp_datamodel.communication import Response
 
 class TripleWikidataTestCase(TestCase):
     def testTripleWikidata(self):
-        r = requests.post('http://ppp.pony.ovh:9000/core/', data='{"id": "", "language": "en", "trace": [], "measures": {}, "tree": {"type": "sentence", "value": "(Douglas Adams, birth date, ?)"}}').json()
+        r = requests.post('http://askplatyp.us:9000/core/', data='{"id": "", "language": "en", "trace": [], "measures": {}, "tree": {"type": "sentence", "value": "(Douglas Adams, birth date, ?)"}}').json()
         r = list(map(Response.from_dict, r))
         self.assertGreaterEqual(len(r), 2, r)
         got_actual_answer = False
