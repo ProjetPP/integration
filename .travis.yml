@@ -9,7 +9,7 @@ install:
    - free -m
    - mkdir -p cache/
    - sudo apt-get update
-   - sudo apt-get install git npm curl wget php5-cli php5-curl unzip openjdk-7-jre-headless apache2 libapache2-mod-fastcgi python3 python3-dev libaspell-dev python3-numpy imagemagick librsvg2-bin
+   - sudo apt-get install git npm curl wget php5-cli php5-curl unzip openjdk-7-jre-headless apache2 libapache2-mod-fastcgi python3 python3-dev libaspell-dev python3-numpy
    - sudo /etc/init.d/mysql stop
    - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
    - sudo sed -i "s/9000/8000/" ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
@@ -33,7 +33,6 @@ before_script:
    - git clone https://github.com/ProjetPP/Deployment.git
    - sed -i "s#/home/ppp/#$HOME/#" Deployment/*.json
    - sed -i "s#--upgrade##" Deployment/bootstrap_modules.sh
-   - ./Deployment/bootstrap_icons.sh
    - cp cache/stanford-corenlp-full-2014-08-27.zip . || true
    - ./Deployment/bootstrap_corenlp.sh
    - cp -u stanford-corenlp-full-2014-08-27.zip cache/
