@@ -1,7 +1,7 @@
 import requests
 from unittest import TestCase
 
-from ppp_datamodel import Triple
+from ppp_datamodel import Triple, Resource
 from ppp_datamodel.communication import Response
 
 class OracleTestCase(TestCase):
