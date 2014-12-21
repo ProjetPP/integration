@@ -11,4 +11,5 @@ class OracleTestCase(TestCase):
                         map(Response.from_dict, r)))
         self.assertGreaterEqual(len(r), 1, r)
         for o in r:
-            self.assertEqual(o.tree.type, 'http://projetpp.github.io/')
+            self.assertEqual(o.tree.type, 'resource')
+            self.assertEqual(o.tree.value, 'http://projetpp.github.io/')
