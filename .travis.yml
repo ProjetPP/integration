@@ -25,6 +25,7 @@ install:
    - wget https://bootstrap.pypa.io/get-pip.py
    - export PATH=$HOME/.local/bin:$PATH
    - python3 get-pip.py --user
+   - pip install setuptools==9.1
    - pip3 install --user gunicorn requests ppp_datamodel ppp_core jsonrpclib-pelix nltk
    - python3 -m nltk.downloader wordnet
    - free -m
