@@ -15,7 +15,8 @@ class TripleHalWikidataTestCase(TestCase):
                 self.assertEqual(o.tree.value, '1938-01-10')
                 got_actual_answer = True
             elif o.tree.type == 'list':
-                self.assertIn(Resource('1938-01-10'), o.tree.list)
+                self.assertIn('1938-01-10',
+                        (x.value for x in o.tree.list))
                 got_actual_answer = True
         self.assertTrue(got_actual_answer, r)
 
