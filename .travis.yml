@@ -35,11 +35,12 @@ before_script:
    - sed -i "s#/home/ppp/#$HOME/#" Deployment/*.json
    - sed -i "s#--upgrade##" Deployment/bootstrap_modules.sh
    - cp cache/stanford-corenlp-full-2014-08-27.zip . || true
-   - ./Deployment/bootstrap_corenlp.sh
+   - ./Deployment/bootstrap_corenlp.sh &
+   - ./Deployment/bootstrap_modules.sh &
+   - for job in `jobs -p`; do echo $job;     wait $job; done
    - cp -u stanford-corenlp-full-2014-08-27.zip cache/
    - ./Deployment/run_corenlp.sh &
    - pwd
-   - ./Deployment/bootstrap_modules.sh
    - ls "$(pwd)/PPP-Wikidata"
    - sudo service apache2 restart
    - ./Deployment/run_python.sh &
