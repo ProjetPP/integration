@@ -8,5 +8,5 @@ class NaturalmathAndCasTestCase(TestCase):
     def testNaturalmathAndCas(self):
         r = requests.post('http://localhost:9000/core/', data='{"id": "", "language": "en", "trace": [], "measures": {}, "tree": {"type": "sentence", "value": "derivate cos(x)"}}').json()
         r = [Response.from_dict(x) for x in r]
-        self.assertIn(r'- \sin{\left (x \right )}',
+        self.assertIn(r'-sin(x)',
                 {x.tree.value for x in r if isinstance(x.tree, Resource)})
