@@ -12,5 +12,5 @@ class WikidataTestCase(TestCase):
         self.assertGreaterEqual(len(r), 1, r)
         for o in r:
             self.assertEqual(o.tree.type, 'resource')
-            self.assertEqual(o.tree.value, '1952-03-11')
+            self.assertEqual(o.tree.value, '1961-08-04')
 
