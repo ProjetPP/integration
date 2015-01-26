@@ -39,6 +39,10 @@ before_script:
    - ./Deployment/bootstrap_corenlp.sh &
    - ./Deployment/bootstrap_modules.sh &
    - for job in `jobs -p`; do echo $job;     wait $job; done
+   - pwd
+   - ls
+   - ls stanford*
+   - echo "Ceci est un test." | /usr/lib/jvm/java-8-oracle/bin/java -classpath stanford-postagger-full-2014-10-26/stanford-postagger.jar edu.stanford.nlp.tagger.maxent.MaxentTagger -model stanford-postagger-full-2014-10-26/models/french.tagger
    - cp -u stanford-corenlp-full-2014-08-27.zip cache/
    - ./Deployment/run_corenlp.sh &
    - pwd
