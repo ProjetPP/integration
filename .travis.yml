@@ -54,6 +54,7 @@ before_script:
    - ps aux --sort -rss | cat
 
 script:
+   - pwd
    - python3 run_tests.py
 
 
