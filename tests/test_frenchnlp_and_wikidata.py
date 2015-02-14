@@ -11,7 +11,9 @@ class WikidataTestCase(TestCase):
         r = list(filter(lambda x:not isinstance(x.tree, Triple),
                         map(Response.from_dict, r)))
         self.assertGreaterEqual(len(r), 1, r)
+        got_answer = False
         for o in r:
-            self.assertEqual(o.tree.type, 'resource')
-            self.assertEqual(o.tree.value, '1961-08-04')
-
+            if o.tree.type == 'resource'
+                self.assertEqual(o.tree.value, '1961-08-04')
+                got_answer = True
+        self.assertTrue(got_answer, r)
