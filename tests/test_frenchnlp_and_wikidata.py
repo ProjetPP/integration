@@ -13,7 +13,7 @@ class WikidataTestCase(TestCase):
         self.assertGreaterEqual(len(r), 1, r)
         got_answer = False
         for o in r:
-            if o.tree.type == 'resource'
+            if o.tree.type == 'resource':
                 self.assertEqual(o.tree.value, '1961-08-04')
                 got_answer = True
         self.assertTrue(got_answer, r)
