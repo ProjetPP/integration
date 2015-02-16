@@ -35,7 +35,7 @@ before_script:
    - git clone https://github.com/ProjetPP/Deployment.git
    - sed -i "s#/home/ppp/#$HOME/#" Deployment/*.json
    - sed -i "s#--upgrade##" Deployment/bootstrap_modules.sh
-   - cp cache/stanford-corenlp-full-2014-08-27.zip . || true
+   - cp cache/stanford-corenlp-full-2015-01-29.zip . || true
    - ./Deployment/bootstrap_corenlp.sh &
    - ./Deployment/bootstrap_modules.sh &
    - for job in `jobs -p`; do echo $job;     wait $job; done
@@ -43,7 +43,7 @@ before_script:
    - ls
    - ls stanford*
    - echo "Ceci est un test." | /usr/lib/jvm/java-8-oracle/bin/java -classpath stanford-postagger-full-2014-10-26/stanford-postagger.jar edu.stanford.nlp.tagger.maxent.MaxentTagger -model stanford-postagger-full-2014-10-26/models/french.tagger
-   - cp -u stanford-corenlp-full-2014-08-27.zip cache/
+   - cp -u stanford-corenlp-full-2015-01-29.zip cache/
    - ./Deployment/run_corenlp.sh &
    - pwd
    - ls "$(pwd)/PPP-Wikidata"
