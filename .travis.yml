@@ -44,7 +44,7 @@ before_script:
    - ls stanford*
    - echo "Ceci est un test." | /usr/lib/jvm/java-8-oracle/bin/java -classpath stanford-postagger-full-2014-10-26/stanford-postagger.jar edu.stanford.nlp.tagger.maxent.MaxentTagger -model stanford-postagger-full-2014-10-26/models/french.tagger
    - cp -u stanford-corenlp-full-2015-01-29.zip cache/
-   - ./Deployment/run_corenlp.sh &
+   - travis_retry --retry 10 ./Deployment/run_corenlp.sh &
    - pwd
    - ls "$(pwd)/PPP-Wikidata"
    - sudo service apache2 restart
