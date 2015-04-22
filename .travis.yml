@@ -37,13 +37,14 @@ before_script:
    - sed -i "s#localhost:8999#corenlp.backend.askplatyp.us#" Deployment/nlp_classical_config.json
    - sed -i "s#--upgrade##" Deployment/bootstrap_modules.sh
    - cp cache/stanford-corenlp-full-2015-01-29.zip . || true
-   - ./Deployment/bootstrap_modules.sh
+   - ./Deployment/bootstrap_corenlp.sh &
+   - ./Deployment/bootstrap_modules.sh &
+   - for job in `jobs -p`; do echo $job;     wait $job; done
    - pwd
    - ls
    - ls stanford*
    - echo "Ceci est un test." | /usr/lib/jvm/java-8-oracle/bin/java -classpath stanford-postagger-full-2014-10-26/stanford-postagger.jar edu.stanford.nlp.tagger.maxent.MaxentTagger -model stanford-postagger-full-2014-10-26/models/french.tagger
    - cp -u stanford-corenlp-full-2015-01-29.zip cache/
-   - travis_retry ./Deployment/run_corenlp.sh &
    - pwd
    - ls "$(pwd)/PPP-Wikidata"
    - sudo service apache2 restart
