@@ -34,11 +34,10 @@ install:
 before_script:
    - git clone https://github.com/ProjetPP/Deployment.git
    - sed -i "s#/home/ppp/#$HOME/#" Deployment/*.json
+   - sed -i "s#localhost:8999#corenlp.backend.askplatyp.us#" Deployment/nlp_classical_config.json
    - sed -i "s#--upgrade##" Deployment/bootstrap_modules.sh
    - cp cache/stanford-corenlp-full-2015-01-29.zip . || true
-   - ./Deployment/bootstrap_corenlp.sh &
-   - ./Deployment/bootstrap_modules.sh &
-   - for job in `jobs -p`; do echo $job;     wait $job; done
+   - ./Deployment/bootstrap_modules.sh
    - pwd
    - ls
    - ls stanford*
