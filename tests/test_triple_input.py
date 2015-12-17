@@ -11,10 +11,11 @@ class TripleWikidataTestCase(TestCase):
         self.assertGreaterEqual(len(r), 2, r)
         got_actual_answer = False
         for o in r:
-            self.assertIn(o.tree.type, {'resource', 'triple'})
-            if o.tree.type == 'resource':
-                self.assertEqual(o.tree.value, '1952-03-11')
-                got_actual_answer = True
+            self.assertIn(o.tree.type, {'list', 'triple'})
+            if o.tree.type == 'list':
+                for resource in o.tree.list:
+                    if resource.type == 'resource' and resource.value == '1952-03-11':
+                        got_actual_answer = True
             elif o.trace[0].module in ('NLP-ML-standalone', 'QuestionParsing-Grammatical'):
                 pass
             else:
