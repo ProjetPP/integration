@@ -9,7 +9,7 @@ install:
    - free -m
    - mkdir -p cache/
    - sudo add-apt-repository ppa:webupd8team/java -y
-   - sudo add-apt-repository ppa:fkrull/deadsnakes
+   - sudo add-apt-repository ppa:fkrull/deadsnakes -y
    - sudo apt-get update
    - sudo apt-get install git npm curl wget php5-cli php5-curl unzip openjdk-7-jre-headless apache2 libapache2-mod-fastcgi python3.4 python3.4-dev libaspell-dev aspell-en aspell-fr python3-numpy oracle-java8-installer
    - sudo /etc/init.d/mysql stop
