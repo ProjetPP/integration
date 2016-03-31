@@ -9,8 +9,9 @@ install:
    - free -m
    - mkdir -p cache/
    - sudo add-apt-repository ppa:webupd8team/java -y
+   - sudo add-apt-repository ppa:fkrull/deadsnakes
    - sudo apt-get update
-   - sudo apt-get install git npm curl wget php5-cli php5-curl unzip openjdk-7-jre-headless apache2 libapache2-mod-fastcgi python3 python3-dev libaspell-dev aspell-en aspell-fr python3-numpy oracle-java8-installer
+   - sudo apt-get install git npm curl wget php5-cli php5-curl unzip openjdk-7-jre-headless apache2 libapache2-mod-fastcgi python3.4 python3.4-dev libaspell-dev aspell-en aspell-fr python3-numpy oracle-java8-installer
    - sudo /etc/init.d/mysql stop
    - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
    - sudo sed -i "s/9000/8000/" ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
