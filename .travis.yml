@@ -26,10 +26,10 @@ install:
    - sudo service apache2 restart
    - wget https://bootstrap.pypa.io/get-pip.py
    - export PATH=$HOME/.local/bin:$PATH
-   - python3 get-pip.py --user
-   - pip3 install --user setuptools==9.1
-   - pip3 install --user gunicorn requests ppp_datamodel ppp_core jsonrpclib-pelix nltk
-   - python3 -m nltk.downloader wordnet
+   - python3.4 get-pip.py --user
+   - python3.4 -m pip install --user setuptools==9.1
+   - python3.4 -m pip install --user gunicorn requests ppp_datamodel ppp_core jsonrpclib-pelix nltk
+   - python3.4 -m nltk.downloader wordnet
    - free -m
 
 before_script:
@@ -56,7 +56,7 @@ before_script:
 
 script:
    - pwd
-   - python3 run_tests.py
+   - python3.4 run_tests.py
 
 
 after_failure:
