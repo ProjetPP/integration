@@ -25,6 +25,8 @@ class WikidataTestCase(TestCase):
         self.assertGreaterEqual(len(r), 1, r)
         got_actual_answer = False
         for o in r:
-            if o.tree.type == 'resource' and o.tree.value_type == 'resource-jsonld' and o.tree.value == 'Douglas Adams':
-                got_actual_answer = True
+            if o.tree.type == 'list':
+                for resource in o.tree.list:
+                    if resource.type == 'resource' and resource.value_type == 'resource-jsonld' and resource.value == 'Douglas Adams':
+                        got_actual_answer = True
         self.assertTrue(got_actual_answer, r)
