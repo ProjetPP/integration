@@ -8,7 +8,12 @@ install:
    - sudo add-apt-repository ppa:webupd8team/java -y
    - sudo add-apt-repository ppa:fkrull/deadsnakes -y
    - sudo apt-get update
-   - sudo apt-get install git npm curl wget php5-cli php5-curl unzip openjdk-7-jre-headless apache2 libapache2-mod-fastcgi python3.4 python3.4-dev libaspell-dev aspell-en aspell-fr python3-numpy oracle-java8-installer
+   - sudo apt-get install git npm curl wget php5-cli php5-curl unzip openjdk-7-jre-headless apache2 libapache2-mod-fastcgi python3.4 python3.4-dev libaspell-dev aspell-en aspell-fr oracle-java8-installer
+   - sudo apt-get build-dep python3-numpy
+   - wget https://bootstrap.pypa.io/get-pip.py
+   - python3.4 -m pip install --user numpy
+   - export PATH=$HOME/.local/bin:$PATH
+   - python3.4 get-pip.py --user
    - sudo /etc/init.d/mysql stop
    - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
    - sudo sed -i "s/9000/8000/" ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
@@ -21,9 +26,6 @@ install:
    - cat travis-ci-hosts | sudo tee -a /etc/hosts
    - sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)?g" --in-place /etc/apache2/sites-available/default
    - sudo service apache2 restart
-   - wget https://bootstrap.pypa.io/get-pip.py
-   - export PATH=$HOME/.local/bin:$PATH
-   - python3.4 get-pip.py --user
    - python3.4 -m pip install --user setuptools==9.1
    - python3.4 -m pip install --user gunicorn requests ppp_datamodel ppp_core jsonrpclib-pelix nltk
    - python3.4 -m nltk.downloader wordnet
